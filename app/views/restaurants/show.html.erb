@@ -1,0 +1,27 @@
+<div class="container d-flex flex-column flex-wrap justify-content-center w-75 mt-5">
+<h1>Restaurants <%=@restaurant.name%></h1>
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+<p>
+  <strong>Phone Number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+<p class="btn btn-secondary" style="width: 18rem;">
+  <%= link_to "Back to Home",  restaurants_path(@restaurant) %>
+</p>
+<div class="card" style="width: 18rem;">
+  <h3 class="title align-text center">Reviews</h3>
+  <%=   link_to 'Add a new review', new_restaurant_review_path(@restaurant), class: "btn btn-primary mb-3"%>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        <p><%= review.content %></p>
+      </li>
+    <% end %>
+    <% if @restaurant.reviews.empty? %>
+      <li>No reviews found.</li>
+    <% end %>
+</div>
+</div>
